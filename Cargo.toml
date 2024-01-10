@@ -1,0 +1,23 @@
+[package]
+name = "navitas"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+bevy = "0.12.1"
+
+[profile.dev]
+opt-level = 0
+incremental = true
+
+
+[profile.release]
+opt-level = 'z'
+lto = 'thin'
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[target.wasm32-unknown-unknown]
+runner = "wasm-server-runner"
